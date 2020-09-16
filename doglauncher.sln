@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "doglauncher", "doglauncher\doglauncher.vbproj", "{988C5136-BA9A-4782-8EF8-758FCCAC9741}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{988C5136-BA9A-4782-8EF8-758FCCAC9741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{988C5136-BA9A-4782-8EF8-758FCCAC9741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{988C5136-BA9A-4782-8EF8-758FCCAC9741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{988C5136-BA9A-4782-8EF8-758FCCAC9741}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22FC498B-CA20-4C46-9966-C41FE7AB599A}
+	EndGlobalSection
+EndGlobal
