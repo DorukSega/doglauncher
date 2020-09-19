@@ -22,6 +22,7 @@ Partial Class Settings
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Settings))
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
         Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
@@ -41,62 +42,69 @@ Partial Class Settings
         'CheckBox4
         '
         Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.ForeColor = System.Drawing.Color.Black
+        Me.CheckBox4.BackColor = System.Drawing.Color.Transparent
+        Me.CheckBox4.ForeColor = System.Drawing.Color.White
         Me.CheckBox4.Location = New System.Drawing.Point(16, 191)
         Me.CheckBox4.Name = "CheckBox4"
         Me.CheckBox4.Size = New System.Drawing.Size(261, 17)
         Me.CheckBox4.TabIndex = 2
         Me.CheckBox4.Text = "Hide process when resetting [Not Recommended]"
-        Me.CheckBox4.UseVisualStyleBackColor = True
+        Me.CheckBox4.UseVisualStyleBackColor = False
         '
         'CheckBox3
         '
         Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.ForeColor = System.Drawing.Color.Black
+        Me.CheckBox3.BackColor = System.Drawing.Color.Transparent
+        Me.CheckBox3.ForeColor = System.Drawing.Color.White
         Me.CheckBox3.Location = New System.Drawing.Point(16, 168)
         Me.CheckBox3.Name = "CheckBox3"
         Me.CheckBox3.Size = New System.Drawing.Size(261, 17)
         Me.CheckBox3.TabIndex = 3
         Me.CheckBox3.Text = "Hide process when installing [Not Recommended]"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.CheckBox3.UseVisualStyleBackColor = False
         '
         'CheckBox2
         '
         Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.ForeColor = System.Drawing.Color.Black
+        Me.CheckBox2.BackColor = System.Drawing.Color.Transparent
+        Me.CheckBox2.ForeColor = System.Drawing.Color.White
         Me.CheckBox2.Location = New System.Drawing.Point(16, 145)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(262, 17)
         Me.CheckBox2.TabIndex = 4
         Me.CheckBox2.Text = "Hide process when updating [Not Recommended]"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.CheckBox2.UseVisualStyleBackColor = False
         '
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.ForeColor = System.Drawing.Color.Black
+        Me.CheckBox1.BackColor = System.Drawing.Color.Transparent
+        Me.CheckBox1.ForeColor = System.Drawing.Color.White
         Me.CheckBox1.Location = New System.Drawing.Point(16, 122)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(177, 17)
         Me.CheckBox1.TabIndex = 5
         Me.CheckBox1.Text = "Check for updates every launch"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.CheckBox1.UseVisualStyleBackColor = False
         '
         'CheckBox5
         '
         Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.ForeColor = System.Drawing.Color.Black
+        Me.CheckBox5.BackColor = System.Drawing.Color.Transparent
+        Me.CheckBox5.ForeColor = System.Drawing.Color.White
         Me.CheckBox5.Location = New System.Drawing.Point(16, 214)
         Me.CheckBox5.Name = "CheckBox5"
         Me.CheckBox5.Size = New System.Drawing.Size(168, 17)
         Me.CheckBox5.TabIndex = 2
         Me.CheckBox5.Text = "Close the Launcher on launch"
-        Me.CheckBox5.UseVisualStyleBackColor = True
+        Me.CheckBox5.UseVisualStyleBackColor = False
         '
         'Label3
         '
         Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Label3.ForeColor = System.Drawing.Color.White
         Me.Label3.Location = New System.Drawing.Point(86, 59)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(238, 13)
@@ -115,8 +123,10 @@ Partial Class Settings
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(162, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(12, 37)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(91, 20)
@@ -151,7 +161,7 @@ Partial Class Settings
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.Gray
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
@@ -174,7 +184,7 @@ Partial Class Settings
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.BackgroundImage = Global.doglauncher.My.Resources.Resource1.close
+        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -189,7 +199,8 @@ Partial Class Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.Silver
+        Me.BackColor = System.Drawing.Color.DarkGray
+        Me.BackgroundImage = Global.doglauncher.My.Resources.Resource1.Background
         Me.ClientSize = New System.Drawing.Size(351, 259)
         Me.ControlBox = False
         Me.Controls.Add(Me.Panel1)
@@ -209,6 +220,7 @@ Partial Class Settings
         Me.Name = "Settings"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
+        Me.TopMost = True
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)

@@ -8,6 +8,7 @@ Public Class MainPage
     Public MoveForm As Boolean
     Public MoveForm_MousePosition As Point
     Dim drive As String
+    Dim but4type As String = "install"
     Dim names As New List(Of String)
     Dim ids As New List(Of String)
     Dim links As New List(Of String)
@@ -80,7 +81,7 @@ Pause"
     Dim upd22 As String = """
 md endupdate
 Exit"
-    Private Sub MainPage_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown, Panel1.MouseDown, NewsAndChangelog.MouseDown, Panel2.MouseDown, Label1.MouseDown
+    Private Sub MainPage_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown, Panel1.MouseDown, NewsAndChangelog.MouseDown, Panel2.MouseDown, PictureBox2.MouseDown
         If e.Button = MouseButtons.Left Then
             MoveForm = True
             'Me.Cursor = Cursors.NoMove2D
@@ -88,13 +89,13 @@ Exit"
         End If
     End Sub
 
-    Private Sub MainPage_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove, Panel1.MouseMove, NewsAndChangelog.MouseMove, Panel2.MouseMove, Label1.MouseMove
+    Private Sub MainPage_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove, Panel1.MouseMove, NewsAndChangelog.MouseMove, Panel2.MouseMove, PictureBox2.MouseMove
         If MoveForm Then
             Me.Location = Me.Location + (e.Location - MoveForm_MousePosition)
         End If
     End Sub
 
-    Private Sub MainPage_MouseUp(sender As Object, e As MouseEventArgs) Handles MyBase.MouseUp, Panel1.MouseUp, NewsAndChangelog.MouseUp, Panel2.MouseUp, Label1.MouseUp
+    Private Sub MainPage_MouseUp(sender As Object, e As MouseEventArgs) Handles MyBase.MouseUp, Panel1.MouseUp, NewsAndChangelog.MouseUp, Panel2.MouseUp, PictureBox2.MouseUp
         If e.Button = MouseButtons.Left Then
             MoveForm = False
             ' Me.Cursor = Cursors.Default
@@ -251,11 +252,13 @@ browser:
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         If ComboBox1.Text <> "" Then
             If My.Computer.FileSystem.DirectoryExists(sourcemodsfolder & "\" & folders.Item(ComboBox1.SelectedIndex)) Then
-                Button4.Text = "Reset"
+                Button4.BackgroundImage = doglauncher.My.Resources.Resource1.Reset_Button
                 Button5.Enabled = True
+                but4type = "reset"
             Else
-                Button4.Text = "Install"
+                Button4.BackgroundImage = doglauncher.My.Resources.Resource1.Install
                 Button5.Enabled = False
+                but4type = "install"
             End If
         End If
     End Sub
@@ -286,7 +289,7 @@ browser:
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         If names.Contains(ComboBox1.Text) Then
-            If Button4.Text = "Install" Then
+            If but4type = "install" Then
                 Button4.Enabled = False
                 Button2.Enabled = False
                 Button5.Enabled = False
@@ -310,16 +313,18 @@ browser:
                 Button2.Enabled = True
                 Button5.Enabled = True
                 If My.Computer.FileSystem.DirectoryExists(sourcemodsfolder & "\" & folders.Item(ComboBox1.SelectedIndex)) Then
-                    Button4.Text = "Reset"
+                    Button4.BackgroundImage = doglauncher.My.Resources.Resource1.Reset_Button
                     Button5.Enabled = True
+                    but4type = "reset"
                 Else
-                    Button4.Text = "Install"
+                    Button4.BackgroundImage = doglauncher.My.Resources.Resource1.Install
                     Button5.Enabled = False
+                    but4type = "install"
                 End If
                 My.Computer.FileSystem.DeleteDirectory(sourcemodsfolder & "\endinstall", FileIO.DeleteDirectoryOption.DeleteAllContents)
                 My.Computer.FileSystem.DeleteFile("install.bat")
                 MsgBox("Restart Steam before launching")
-            ElseIf Button4.Text = "Reset" Then
+            ElseIf but4type = "reset" Then
                 Dim curlink As String = links.Item(ComboBox1.SelectedIndex)
                 Dim curdirectory As String = sourcemodsfolder & "\" & folders.Item(ComboBox1.SelectedIndex)
                 Button4.Enabled = False
@@ -346,11 +351,13 @@ browser:
                 Button2.Enabled = True
                 Button5.Enabled = True
                 If My.Computer.FileSystem.DirectoryExists(sourcemodsfolder & "\" & folders.Item(ComboBox1.SelectedIndex)) Then
-                    Button4.Text = "Reset"
+                    Button4.BackgroundImage = doglauncher.My.Resources.Resource1.Reset_Button
                     Button5.Enabled = True
+                    but4type = "reset"
                 Else
-                    Button4.Text = "Install"
+                    Button4.BackgroundImage = doglauncher.My.Resources.Resource1.Install
                     Button5.Enabled = False
+                    but4type = "install"
                 End If
             End If
         Else
@@ -411,11 +418,13 @@ browser:
             Button2.Enabled = True
             Button5.Enabled = True
             If My.Computer.FileSystem.DirectoryExists(sourcemodsfolder & "\" & folders.Item(ComboBox1.SelectedIndex)) Then
-                Button4.Text = "Reset"
+                Button4.BackgroundImage = doglauncher.My.Resources.Resource1.Reset_Button
                 Button5.Enabled = True
+                but4type = "reset"
             Else
-                Button4.Text = "Install"
+                Button4.BackgroundImage = doglauncher.My.Resources.Resource1.Install
                 Button5.Enabled = False
+                but4type = "install"
             End If
         End If
     End Sub

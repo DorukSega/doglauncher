@@ -38,12 +38,32 @@ doglauncher
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:doglauncher.My.Resources.Resource1._Exit">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:doglauncher.My.Resources.Resource1.back">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:doglauncher.My.Resources.Resource1.Background">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:doglauncher.My.Resources.Resource1.Bottom_Bar">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:doglauncher.My.Resources.Resource1.close">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:doglauncher.My.Resources.Resource1.Install">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -58,7 +78,32 @@ doglauncher
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:doglauncher.My.Resources.Resource1.Patch_Notes">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:doglauncher.My.Resources.Resource1.Play_Button">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:doglauncher.My.Resources.Resource1.Reset_Button">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:doglauncher.My.Resources.Resource1.settings">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:doglauncher.My.Resources.Resource1.Top_Bar">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:doglauncher.My.Resources.Resource1.Update">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
