@@ -2,10 +2,9 @@
 Imports System.Text
 Public Class MainPage
     Dim modsfolder As DirectoryInfo
-    Dim sourcemodsfolder As String 'sourcemods folder
+    Public sourcemodsfolder As String 'sourcemods folder
     Dim client As New Net.WebClient 'WEB
     Dim areweonline As Boolean = False
-    Dim parameters As String = ""
     Public MoveForm As Boolean
     Public MoveForm_MousePosition As Point
     Dim drive As String
@@ -81,7 +80,7 @@ Pause"
     Dim upd22 As String = """
 md endupdate
 Exit"
-    Private Sub MainPage_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown, Panel1.MouseDown, NewsAndChangelog.MouseDown
+    Private Sub MainPage_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown, Panel1.MouseDown, NewsAndChangelog.MouseDown, Panel2.MouseDown, Label1.MouseDown
         If e.Button = MouseButtons.Left Then
             MoveForm = True
             'Me.Cursor = Cursors.NoMove2D
@@ -89,13 +88,13 @@ Exit"
         End If
     End Sub
 
-    Private Sub MainPage_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove, Panel1.MouseMove, NewsAndChangelog.MouseMove
+    Private Sub MainPage_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove, Panel1.MouseMove, NewsAndChangelog.MouseMove, Panel2.MouseMove, Label1.MouseMove
         If MoveForm Then
             Me.Location = Me.Location + (e.Location - MoveForm_MousePosition)
         End If
     End Sub
 
-    Private Sub MainPage_MouseUp(sender As Object, e As MouseEventArgs) Handles MyBase.MouseUp, Panel1.MouseUp, NewsAndChangelog.MouseUp
+    Private Sub MainPage_MouseUp(sender As Object, e As MouseEventArgs) Handles MyBase.MouseUp, Panel1.MouseUp, NewsAndChangelog.MouseUp, Panel2.MouseUp, Label1.MouseUp
         If e.Button = MouseButtons.Left Then
             MoveForm = False
             ' Me.Cursor = Cursors.Default
@@ -113,8 +112,8 @@ Exit"
             MsgBox("Install git scm if you did'nt already, it is required for app to work: https://git-scm.com/download/win")
         End If
         If My.Computer.FileSystem.FileExists("config\parameterconfig.bin") Then 'loads parameters
-            parameters = My.Computer.FileSystem.ReadAllText("config\parameterconfig.bin")
-            TextBox3.Text = parameters
+            Settings.parameters = My.Computer.FileSystem.ReadAllText("config\parameterconfig.bin")
+            Settings.TextBox3.Text = Settings.parameters
         End If
 
         '[MAIN]Check if sourcemods folder is defined, if not open a openfolder for it else just assign it to a variable and move on
@@ -124,22 +123,22 @@ Exit"
                 sourcemodsfolder = "C:\Program Files\Steam\steamapps\sourcemods"
                 My.Computer.FileSystem.WriteAllText("config\launcherconfig.bin", sourcemodsfolder, True)
                 modsfolder = New DirectoryInfo(sourcemodsfolder)
-                TextBox1.Text = sourcemodsfolder
+                Settings.TextBox1.Text = sourcemodsfolder
             ElseIf My.Computer.FileSystem.DirectoryExists("D:\Program Files\Steam\steamapps\sourcemods") Then
                 sourcemodsfolder = "D:\Program Files\Steam\steamapps\sourcemods"
                 My.Computer.FileSystem.WriteAllText("config\launcherconfig.bin", sourcemodsfolder, True)
                 modsfolder = New DirectoryInfo(sourcemodsfolder)
-                TextBox1.Text = sourcemodsfolder
+                Settings.TextBox1.Text = sourcemodsfolder
             ElseIf My.Computer.FileSystem.DirectoryExists("C:\Program Files (x86)\Steam\steamapps\sourcemods") Then
                 sourcemodsfolder = "C:\Program Files (x86)\Steam\steamapps\sourcemods"
                 My.Computer.FileSystem.WriteAllText("config\launcherconfig.bin", sourcemodsfolder, True)
                 modsfolder = New DirectoryInfo(sourcemodsfolder)
-                TextBox1.Text = sourcemodsfolder
+                Settings.TextBox1.Text = sourcemodsfolder
             ElseIf My.Computer.FileSystem.DirectoryExists("D:\Program Files (x86)\Steam\steamapps\sourcemods") Then
                 sourcemodsfolder = "D:\Program Files (x86)\Steam\steamapps\sourcemods"
                 My.Computer.FileSystem.WriteAllText("config\launcherconfig.bin", sourcemodsfolder, True)
                 modsfolder = New DirectoryInfo(sourcemodsfolder)
-                TextBox1.Text = sourcemodsfolder
+                Settings.TextBox1.Text = sourcemodsfolder
             Else
                 'if it is unknown location
 browser:
@@ -149,7 +148,7 @@ browser:
                     sourcemodsfolder = FolderBrowserDialog1.SelectedPath
                     My.Computer.FileSystem.WriteAllText("config\launcherconfig.bin", sourcemodsfolder, True)
                     modsfolder = New DirectoryInfo(sourcemodsfolder)
-                    TextBox1.Text = sourcemodsfolder
+                    Settings.TextBox1.Text = sourcemodsfolder
                 Else
                     GoTo browser
                 End If
@@ -157,7 +156,7 @@ browser:
         ElseIf Not My.Computer.FileSystem.ReadAllText("config\launcherconfig.bin") = Nothing Then
             sourcemodsfolder = My.Computer.FileSystem.ReadAllText("config\launcherconfig.bin")
             modsfolder = New DirectoryInfo(sourcemodsfolder)
-            TextBox1.Text = sourcemodsfolder
+            Settings.TextBox1.Text = sourcemodsfolder
         Else
             MsgBox("If you are seeing this, something fishy is going on. Make sure to contact Doruk.")
         End If
@@ -165,7 +164,7 @@ browser:
         Call Listing()
         Try
             areweonline = True
-            PictureBox1.Image = doglauncher.My.Resources.Resource1.online
+            PictureBox1.BackgroundImage = doglauncher.My.Resources.Resource1.online
             NewsAndChangelog.Text = client.DownloadString("https://raw.githubusercontent.com/DorukSega/launcherdatabed/master/dognews.txt")
 
         Catch ex As Exception
@@ -184,7 +183,7 @@ browser:
         Try
             databed = client.DownloadString("https://raw.githubusercontent.com/DorukSega/launcherdatabed/master/launchdatadog.txt")
             areweonline = True
-            PictureBox1.Image = doglauncher.My.Resources.Resource1.online
+            PictureBox1.BackgroundImage = doglauncher.My.Resources.Resource1.online
             Dim id As String = ""
             Dim name As String = ""
             Dim link As String = ""
@@ -244,7 +243,7 @@ browser:
             folders.Add("Dog")
             names.Add("Day of Glory: Offline")
             ComboBox1.Items.Add("Day of Glory: Offline")
-            ids.Add("13358098282061215782") 'Don't forget to update this
+            ids.Add("10904300306699630630") 'Don't forget to update this
             Label4.Visible = True
         End Try
     End Sub
@@ -270,7 +269,7 @@ browser:
                 My.Computer.FileSystem.DeleteFile("gamelaunch.bat")
             Else
             End If
-            My.Computer.FileSystem.WriteAllText("gamelaunch.bat", code1 & ids.Item(ComboBox1.SelectedIndex) & code2 & parameters & code3, True, Encoding.ASCII)
+            My.Computer.FileSystem.WriteAllText("gamelaunch.bat", code1 & ids.Item(ComboBox1.SelectedIndex) & code2 & Settings.parameters & code3, True, Encoding.ASCII)
             Shell("gamelaunch.bat", AppWinStyle.Hide)
             Do Until My.Computer.FileSystem.DirectoryExists("endplay")
                 Threading.Thread.Sleep(100)
@@ -361,13 +360,9 @@ browser:
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        If names.Contains(ComboBox1.Text) and areweonline= true Then
+        If names.Contains(ComboBox1.Text) And areweonline = True Then
             Call updatemod()
         End If
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Call Sourcemodsfolderassign()
     End Sub
     Public Sub Sourcemodsfolderassign()
         If Not My.Computer.FileSystem.DirectoryExists("config") Then
@@ -381,7 +376,7 @@ browser:
         If result = Windows.Forms.DialogResult.OK And My.Computer.FileSystem.DirectoryExists(FolderBrowserDialog1.SelectedPath) Then
             Dim path As String = FolderBrowserDialog1.SelectedPath
             sourcemodsfolder = FolderBrowserDialog1.SelectedPath
-            TextBox1.Text = sourcemodsfolder
+            Settings.TextBox1.Text = sourcemodsfolder
             My.Computer.FileSystem.WriteAllText("config\launcherconfig.bin", sourcemodsfolder, True)
             modsfolder = New DirectoryInfo(sourcemodsfolder)
         Else
@@ -431,16 +426,6 @@ browser:
             Settings.Location = New Point(MainPage.MousePosition.X - 400, MainPage.MousePosition.Y + 50)
         Else
             Settings.Close()
-        End If
-    End Sub
-
-    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
-        parameters = TextBox3.Text
-        If Not My.Computer.FileSystem.FileExists("config\parameterconfig.bin") Then
-            My.Computer.FileSystem.WriteAllText("config\parameterconfig.bin", parameters, True, Encoding.ASCII)
-        Else
-            My.Computer.FileSystem.DeleteFile("config\parameterconfig.bin")
-            My.Computer.FileSystem.WriteAllText("config\parameterconfig.bin", parameters, True, Encoding.ASCII)
         End If
     End Sub
 

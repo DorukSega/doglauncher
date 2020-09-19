@@ -4,7 +4,8 @@ Public NotInheritable Class Settings
     Public MoveForm As Boolean
     Public MoveForm_MousePosition As Point
     Dim settingsdata As String
-    Private Sub Form1_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown
+    Public parameters As String = ""
+    Private Sub Form1_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown, Panel1.MouseDown, Label2.MouseDown
         If e.Button = MouseButtons.Left Then
             MoveForm = True
             'Me.Cursor = Cursors.NoMove2D
@@ -12,13 +13,13 @@ Public NotInheritable Class Settings
         End If
     End Sub
 
-    Private Sub Form1_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove
+    Private Sub Form1_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove, Panel1.MouseMove, Label2.MouseMove
         If MoveForm Then
             Me.Location = Me.Location + (e.Location - MoveForm_MousePosition)
         End If
     End Sub
 
-    Private Sub Form1_MouseUp(sender As Object, e As MouseEventArgs) Handles MyBase.MouseUp
+    Private Sub Form1_MouseUp(sender As Object, e As MouseEventArgs) Handles MyBase.MouseUp, Panel1.MouseUp, Label2.MouseUp
         If e.Button = MouseButtons.Left Then
             MoveForm = False
             'Me.Cursor = Cursors.Default
@@ -30,7 +31,12 @@ Public NotInheritable Class Settings
     End Sub
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Not My.Computer.FileSystem.FileExists("config\settingsconfig.bin") Then 'loads parameters
+        If My.Computer.FileSystem.FileExists("config\parameterconfig.bin") Then 'loads parameters
+            parameters = My.Computer.FileSystem.ReadAllText("config\parameterconfig.bin")
+            TextBox3.Text = parameters
+        End If
+        TextBox1.Text = MainPage.sourcemodsfolder
+        If Not My.Computer.FileSystem.FileExists("config\settingsconfig.bin") Then
             Dim parset As String
             If CheckBox1.Checked Then
                 parset = "1"
@@ -123,4 +129,17 @@ Public NotInheritable Class Settings
         End If
     End Sub
 
+    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
+        parameters = TextBox3.Text
+        If Not My.Computer.FileSystem.FileExists("config\parameterconfig.bin") Then
+            My.Computer.FileSystem.WriteAllText("config\parameterconfig.bin", parameters, True, Encoding.ASCII)
+        Else
+            My.Computer.FileSystem.DeleteFile("config\parameterconfig.bin")
+            My.Computer.FileSystem.WriteAllText("config\parameterconfig.bin", parameters, True, Encoding.ASCII)
+        End If
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Call MainPage.Sourcemodsfolderassign()
+    End Sub
 End Class

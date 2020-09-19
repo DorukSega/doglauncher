@@ -48,11 +48,6 @@ doglauncher
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:doglauncher.My.Resources.Resource1.evil_emp">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
 <member name="P:doglauncher.My.Resources.Resource1.offline">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -63,7 +58,7 @@ doglauncher
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:doglauncher.My.Resources.Resource1.shitty_replacement">
+<member name="P:doglauncher.My.Resources.Resource1.settings">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
